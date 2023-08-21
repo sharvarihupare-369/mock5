@@ -18,7 +18,7 @@ postRouter.get("/",async(req,res)=>{
     }
 })
 
-postRouter.post("/appointments",authMiddleware,async(req,res)=>{
+postRouter.post("/appointments",async(req,res)=>{
     try {
         const bookapp = await DoctorModel.create(req.body)
         res.status(200).send({"msg":"Appointment Added Succesfully",bookapp})
@@ -27,7 +27,7 @@ postRouter.post("/appointments",authMiddleware,async(req,res)=>{
     }
 })
 
-postRouter.patch("/update/:id",authMiddleware,async(req,res)=>{
+postRouter.patch("/update/:id",async(req,res)=>{
     const {id} = req.params;
     const userId = req.userId;
     const doctor = await DoctorModel.findOne({_id:id})
@@ -44,7 +44,7 @@ postRouter.patch("/update/:id",authMiddleware,async(req,res)=>{
     }
 })
 
-postRouter.delete("/delete/:id",authMiddleware,async(req,res)=>{
+postRouter.delete("/delete/:id",async(req,res)=>{
     const {id} = req.params;
     const userId = req.userId;
     const doctor = await DoctorModel.findOne({_id:id})
