@@ -3,11 +3,13 @@ const app = express()
 const cors = require("cors")
 const connection = require("./db")
 const userRouter = require("./routes/userRoute")
+const postRouter = require("./routes/postRoute")
 require("dotenv").config()
 
 app.use(cors())
 app.use(express.json())
 app.use("/users",userRouter)
+app.use("/book",postRouter)
 
 
 app.get("/",(req,res)=>{
